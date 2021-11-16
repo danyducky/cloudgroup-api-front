@@ -1,0 +1,41 @@
+.container {
+  display: grid;
+  grid-template-rows: 4rem 12fr;
+
+  width: 100%;
+  height: 100%;
+
+  .container__header {
+    position: relative;
+
+    display: flex;
+
+    background-color: #3DAFDA;
+
+    justify-content: center;
+    align-items: center;
+
+    span {
+      color: white;
+      font-size: 1.4em;
+    }
+
+    span:nth-child(2) {
+      font-size: 2.2em;
+      font-weight: lighter;
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translate(-50%, -50%);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .container__body {
+    padding: 2rem 2rem;
+    background-color: #F8F8F8;
+  }
+}

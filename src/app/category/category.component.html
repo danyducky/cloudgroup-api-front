@@ -1,0 +1,22 @@
+<mat-grid-list [cols]="3" rowHeight="25rem" [gutterSize]="'2rem'">
+
+  <mat-grid-tile *ngFor="let category of Categories">
+
+    <mat-card class="card">
+
+      <mat-card-content>
+        <div class="card__header">
+          <span>{{category.title}}</span>
+        </div>
+
+        <div *ngFor="let todo of category.todos" class="card__option">
+          <mat-checkbox (click)="onCheckboxClick(category.id, todo.id)" [checked]="todo.is_completed" color="primary">
+            <span [style]="todo.is_completed ? 'text-decoration: line-through;' : null">{{todo.text}}</span>
+          </mat-checkbox>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

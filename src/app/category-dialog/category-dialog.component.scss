@@ -1,0 +1,60 @@
+.container {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 2.5fr 9.5fr;
+
+  height: 100%;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 1px solid lightgray;
+
+    span {
+      text-transform: uppercase;
+    }
+  }
+
+  .content {
+    margin: 1rem;
+
+    form {
+      height: 100%;
+      display: grid;
+      grid-template-rows: 4fr 4fr 4fr;
+      grid-gap: 1rem;
+
+      .content__footer {
+        display: grid;
+        grid-template-columns: 6fr 6fr;
+        grid-gap: 1rem;
+
+        button {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+input, select {
+  outline: none;
+  filter: none;
+  border: 1px solid lightgray;
+  background-color: white;
+
+  font-size: 15px;
+
+  padding-left: 1rem;
+}
+
+.error_control {
+  border-color: indianred;
+}
+
+.mat-raised-button {
+  color: white;
+  border-radius: 0;
+}

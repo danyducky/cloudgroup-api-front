@@ -1,0 +1,27 @@
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.card .card__header {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+}
+.card .card__header span {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.card .card__option {
+  padding: 0.5rem;
+}
+
+.mat-card {
+  padding: 0;
+}
+
+.mat-grid-tile {
+  overflow: visible;
+}
+
+/*# sourceMappingURL=category.component.css.map */

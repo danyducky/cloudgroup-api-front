@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="header">
+    <span>Новая задача</span>
+  </div>
+
+  <div class="content">
+    <form [formGroup]="form">
+
+      <input
+        class="{{isControlInvalid('task') ? 'error_control' : null}}"
+        placeholder="Название задачи..."
+        type="text"
+        id="task"
+        formControlName="task"
+      />
+
+      <select *ngIf="!isDesireToAdd" id="categoryId" class="{{isControlInvalid('categoryId') ? 'error_control' : null}}" formControlName="categoryId">
+        <option [ngValue]="null" selected disabled>Категория</option>
+        <option *ngFor="let category of data.categories" [value]="category.id">{{category.title}}</option>
+        <option (click)="toggleAddDesire()">Добавить категорию</option>
+      </select>
+
+      <input
+        *ngIf="isDesireToAdd"
+        class="{{isControlInvalid('categoryTitle') ? 'error_control' : null}}"
+        placeholder="Название категории..."
+        type="text"
+        id="categoryTitle"
+        formControlName="categoryTitle"
+      />
+
+      <div class="content__footer">
+        <button mat-raised-button style="background-color:darkgray;" (click)="close()">Отмена</button>
+        <button mat-raised-button style="background-color:#3DAFDA;" (click)="onSubmit()">Ок</button>
+      </div>
+
+    </form>
+  </div>
+</div>
