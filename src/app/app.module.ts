@@ -12,6 +12,9 @@ import {MatCardModule} from '@angular/material/card'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {CategoryDialogComponent} from './category-dialog/category-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {BaseHttpClientInterceptor} from 'providers/BaseHttpClientInterceptor';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
@@ -31,7 +35,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false} },
+    { provide: HTTP_INTERCEPTORS, useClass: BaseHttpClientInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

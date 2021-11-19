@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Project} from "../../models/project.model";
-import {client} from "../../services/client.service";
-import {CategoryService} from "../services/category.service";
 import {TaskService} from "../services/task.service";
 
 @Component({
@@ -18,6 +16,8 @@ export class CategoryComponent {
 
   onCheckboxClick(categoryId: number, todoId: number) {
     this.taskService.toggleTask(categoryId, todoId)
-      .then(_ => this.checkboxClickEvent.emit())
+      .subscribe(_ => {
+        this.checkboxClickEvent.emit({categoryId, todoId})
+      })
   }
 }

@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from "rxjs"
-import {client} from "../../services/client.service";
+import { Observable } from "rxjs"
 import {Project} from "../../models/project.model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Project[]> {
-    const response = client.get<Project[]>('/projects')
-      .then(r => r.data);
-
-    return from(response);
+    return this.http.get<Project[]>('/projects')
   }
 }

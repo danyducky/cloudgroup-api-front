@@ -3,6 +3,7 @@ import {Project} from "../models/project.model";
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {CategoryDialogComponent} from "./category-dialog/category-dialog.component";
 import {CategoryService} from "./services/category.service";
+import {TaskUpdate} from "../models/task.model";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.categoryService.getCategories().subscribe(categories => {
+      this.data = categories;
+    })
   }
 
   openDialog(): void {
@@ -35,14 +38,21 @@ export class AppComponent implements OnInit {
 
     let dialog = this.dialog.open(CategoryDialogComponent, config);
 
-    dialog.componentInstance.submitEvent.subscribe(_ => {
-      this.getCategories();
+    dialog.componentInstance.submitEvent.subscribe(category => {
+      let index = this.data.findIndex(c => c.id === category.id)
+
+      if (index === -1)
+        this.data.push(category)
+      else
+        this.data[index] = category
     })
   }
 
-  getCategories() {
-    this.categoryService.getCategories().subscribe(categories => {
-      this.data = categories;
-    })
+  onCheckboxClick(payload: any): void {
+    const category = this.data.find(c => c.id === payload.categoryId);
+    const todo = category?.tasks.find(t => t.id === payload.todoId);
+
+    if (todo)
+      todo.is_completed = !todo.is_completed
   }
 }

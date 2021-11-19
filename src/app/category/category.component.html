@@ -9,7 +9,7 @@
           <span>{{category.title}}</span>
         </div>
 
-        <div *ngFor="let todo of category.todos" class="card__option">
+        <div *ngFor="let todo of category.tasks" class="card__option">
           <mat-checkbox (click)="onCheckboxClick(category.id, todo.id)" [checked]="todo.is_completed" color="primary">
             <span [style]="todo.is_completed ? 'text-decoration: line-through;' : null">{{todo.text}}</span>
           </mat-checkbox>

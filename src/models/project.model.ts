@@ -1,7 +1,7 @@
-import {Todo} from "./todo.model";
+import {Task} from "./task.model";
 
 export type Project = {
   id: number;
   title: string;
-  todos: Todo[];
+  tasks: Task[];
 }

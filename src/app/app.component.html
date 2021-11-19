@@ -5,6 +5,6 @@
   </div>
 
   <div class="container__body">
-    <app-category (checkboxClickEvent)="getCategories()" [Categories]="data"></app-category>
+    <app-category (checkboxClickEvent)="onCheckboxClick($event)" [Categories]="data"></app-category>
   </div>
 </div>

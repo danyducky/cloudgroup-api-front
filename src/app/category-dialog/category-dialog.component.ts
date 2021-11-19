@@ -14,7 +14,7 @@ export class CategoryDialogComponent implements OnInit {
   @Output() submitEvent = new EventEmitter();
 
   constructor(private dialogRef: MatDialogRef<CategoryDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {categories: Project[], getCategories: () => {}},
+              @Inject(MAT_DIALOG_DATA) public data: {categories: Project[]},
               private categoryService: CategoryService,
               private taskService: TaskService,
               private fb: FormBuilder) {
@@ -55,8 +55,8 @@ export class CategoryDialogComponent implements OnInit {
       return false
 
     this.taskService.addOrCreate(categoryId.value, categoryTitle.value, task.value)
-      .then(_ => {
-        this.submitEvent.emit();
+      .subscribe(category => {
+        this.submitEvent.emit(category);
         this.dialogRef.close()
       })
 
