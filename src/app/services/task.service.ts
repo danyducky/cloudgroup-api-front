@@ -11,11 +11,11 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   toggleTask(categoryId: number, todoId: number) {
-    return this.http.patch<TaskUpdate>(`/projects/${categoryId}/todo/${todoId}`, null)
+    return this.http.patch<TaskUpdate>(`projects/${categoryId}/todo/${todoId}`, null)
   }
 
   addOrCreate(categoryId: number, categoryTitle: string, text: string) {
-    return this.http.post<Project>('/todos', {
+    return this.http.post<Project>('todos', {
       categoryId,
       categoryTitle,
       text

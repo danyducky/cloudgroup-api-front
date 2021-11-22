@@ -11,6 +11,6 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Project[]> {
-    return this.http.get<Project[]>('/projects')
+    return this.http.get<Project[]>('projects')
   }
 }

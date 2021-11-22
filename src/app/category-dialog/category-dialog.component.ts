@@ -58,6 +58,10 @@ export class CategoryDialogComponent implements OnInit {
       .subscribe(category => {
         this.submitEvent.emit(category);
         this.dialogRef.close()
+      }, error => {
+        this.form.controls['categoryTitle'].setErrors({incorrect: true})
+
+        return false
       })
 
     return true;
