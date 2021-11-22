@@ -63,8 +63,9 @@ export class CategoryDialogComponent implements OnInit {
     return true;
   }
 
-  toggleAddDesire() {
-    this.isDesireToAdd = true;
+  onSelectListChange(target: EventTarget | null) {
+    if ((target as HTMLInputElement).value === 'add')
+      this.isDesireToAdd = true
   }
 
   isControlInvalid(controlName: string): boolean {

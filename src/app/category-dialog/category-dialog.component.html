@@ -14,10 +14,16 @@
         formControlName="task"
       />
 
-      <select *ngIf="!isDesireToAdd" id="categoryId" class="{{isControlInvalid('categoryId') ? 'error_control' : null}}" formControlName="categoryId">
+      <select
+        *ngIf="!isDesireToAdd"
+        id="categoryId"
+        class="{{isControlInvalid('categoryId') ? 'error_control' : null}}"
+        formControlName="categoryId"
+        (change)="onSelectListChange($event.target)"
+      >
         <option [ngValue]="null" selected disabled>Категория</option>
         <option *ngFor="let category of data.categories" [value]="category.id">{{category.title}}</option>
-        <option (click)="toggleAddDesire()">Добавить категорию</option>
+        <option [value]="'add'">Добавить категорию</option>
       </select>
 
       <input
